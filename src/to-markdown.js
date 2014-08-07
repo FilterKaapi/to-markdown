@@ -80,6 +80,13 @@ var toMarkdown = function(string) {
             title = attrs.match(attrRegExp('title'));
         return '![' + (alt && alt[1] ? alt[1] : '') + ']' + '(' + src[1] + (title && title[1] ? ' "' + title[1] + '"' : '') + ')';
       }
+    },
+     {
+      patterns: 'fmath',
+      replacement: function(str, attrs, innerHTML) {
+        var alttext = attrs.match(attrRegExp('alttext')),
+        return '$ ' + alttext + ' $';
+      }
     }
   ];
 
