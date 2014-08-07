@@ -84,7 +84,7 @@ var toMarkdown = function(string) {
      {
       patterns: 'fmath',
       replacement: function(str, attrs, innerHTML) {
-        attrs = attrs.replace(/\t/gi,'\\t');
+        attrs = attrs.replace(/\t/gi,'\\t').replace(/[\b]/gi,'\\b');
         var alttext = attrs.match(attrRegExp('alttext')).replace('able','\\table').replace('ext','\\text');
         return '$ ' + alttext[1] + ' $';
       }
