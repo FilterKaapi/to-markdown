@@ -37,7 +37,7 @@ var toMarkdown = function(string) {
         for(var i = 0; i < hLevel; i++) {
           hPrefix += '#';
         }
-        return '\n\n' + hPrefix + ' ' + innerHTML + '\n';
+        return '\n\n' + hPrefix + ' ' + innerHTML + '\n\n';
       }
     },
     {
@@ -84,9 +84,13 @@ var toMarkdown = function(string) {
      {
       patterns: 'fmath',
       replacement: function(str, attrs, innerHTML) {
-        //attrs = attrs.replace(/\t/gi,'\\t').replace(/[\b]/gi,'\\b');
         var alttext = attrs.match(attrRegExp('alttext'));
         return '$ ' + alttext[1] + ' $';
+      },
+     {
+      patterns: 'span',
+      replacement: function(str, attrs, innerHTML) {
+        return innerHTML ? innerHTML : '';
       }
     }
   ];
